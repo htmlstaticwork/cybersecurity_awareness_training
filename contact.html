@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CyberShield — Contact Us</title>
+  <link rel="stylesheet" href="css/global.css"/>
+  <style>
+    /* Contact page — NO card centering rule (exception) */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 1023px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    .contact-form-box {
+      background: var(--secondary-05);
+      border: var(--border-glow);
+      border-radius: 4px;
+      padding: 40px;
+    }
+    .contact-form-box h2 { margin-bottom: 8px; }
+    .contact-form-box > p { margin-bottom: 28px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Info cards — centered layout at 360px */
+    .info-cards { display: flex; flex-direction: column; gap: 20px; }
+
+    .info-card {
+      background: var(--secondary-05);
+      border: var(--border-glow);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: var(--transition);
+    }
+    .info-card:hover {
+      border-color: var(--secondary-50);
+      background: var(--secondary-10);
+    }
+
+    .info-card-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--secondary-20);
+      border: 1px solid var(--secondary-20);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--secondary);
+    }
+
+    .info-card-text h4 {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+    .info-card-text p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0;
+    }
+    .info-card-text span {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* Color-themed map */
+    .map-container {
+      border: var(--border-glow);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      height: 300px;
+      background: var(--secondary-05);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(90%) hue-rotate(175deg) saturate(0.7) brightness(0.85);
+    }
+
+    [data-theme="light"] .map-container iframe {
+      filter: hue-rotate(175deg) saturate(0.6) brightness(0.9);
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--primary-90);
+      border: var(--border-glow);
+      padding: 10px 16px;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .map-overlay p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--secondary);
+      margin: 0;
+    }
+
+    /* Social section on contact page */
+    .contact-social-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 767px) {
+      .contact-form-box { padding: 24px; }
+      .info-card { flex-direction: column; align-items: center; text-align: center; }
+      .contact-social-row { justify-content: center; }
+    }
+    @media (max-width: 360px) {
+      .info-cards { align-items: center; }
+      .info-card { text-align: center; flex-direction: column; align-items: center; }
+      .contact-social-row { justify-content: center; }
+    }
+
+    /* Office cards */
+    .office-card {
+      background: var(--secondary-05); border: var(--border-glow); border-radius: 4px;
+      padding: 28px 24px; transition: var(--transition);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: var(--glow-secondary); }
+    .office-flag {
+      font-size: 2rem; margin-bottom: 12px;
+    }
+    .office-city {
+      font-family: var(--font-display); font-size: 1rem; color: var(--secondary);
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .office-card p { font-size: 0.85rem; line-height: 1.6; }
+
+    /* FAQ */
+    .faq-item {
+      border: var(--border-glow); border-radius: 4px; overflow: hidden; margin-bottom: 8px;
+    }
+    .faq-question {
+      width: 100%; background: var(--secondary-05); border: none; color: var(--text-primary);
+      padding: 18px 20px; text-align: left; cursor: pointer; font-family: var(--font-body);
+      font-size: 1rem; font-weight: 500; display: flex; justify-content: space-between;
+      align-items: center; transition: var(--transition);
+    }
+    .faq-question:hover { background: var(--secondary-10); color: var(--secondary); }
+    .faq-question.open { color: var(--secondary); background: var(--secondary-10); }
+    .faq-icon { transition: transform 0.3s; font-size: 1.1rem; flex-shrink: 0; }
+    .faq-question.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+      background: var(--secondary-05); padding: 0 20px; font-size: 0.95rem; color: var(--text-muted);
+    }
+    .faq-answer.open { max-height: 200px; padding: 16px 20px; }
+  </style>
+</head>
+<body>
+  <div id="header-inject"></div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="cyber-grid"></div>
+    <div class="container">
+      <div class="page-hero-content" style="animation:fadeInUp 0.8s ease;">
+        <span class="section-tag">// CONTACT US</span>
+        <h1>Get in <span class="gradient-text">Touch</span></h1>
+        <p>Whether you need a demo, have a security question, or want to join our team — we're here and we respond fast. Average response time: under 2 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- FORM -->
+        <div class="contact-form-box reveal">
+          <h2>Send Us a <span class="gradient-text">Message</span></h2>
+          <p>Fill out the form and a specialist will reach out within 2 business hours.</p>
+
+          <form class="cyber-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" placeholder="John" required/>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder="Smith" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Work Email</label>
+              <input type="email" class="form-control" placeholder="you@company.com" required/>
+            </div>
+
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" class="form-control" placeholder="Your organization" required/>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" class="form-control" placeholder="+1 (555) 000-0000"/>
+              </div>
+              <div class="form-group">
+                <label>Team Size</label>
+                <select class="form-control">
+                  <option value="">Select size</option>
+                  <option>1–50</option>
+                  <option>51–200</option>
+                  <option>201–1,000</option>
+                  <option>1,000–5,000</option>
+                  <option>5,000+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>How Can We Help?</label>
+              <select class="form-control">
+                <option value="">Select topic</option>
+                <option>Request a Demo</option>
+                <option>Pricing Information</option>
+                <option>Technical Support</option>
+                <option>Partnership Inquiry</option>
+                <option>Press / Media</option>
+                <option>Career Opportunities</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Message</label>
+              <textarea class="form-control" rows="4" placeholder="Tell us about your security challenges and goals..."></textarea>
+            </div>
+
+            <div style="margin-bottom:20px;">
+              <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-family:var(--font-body);font-size:0.88rem;color:var(--text-muted);">
+                <input type="checkbox" style="margin-top:3px;accent-color:var(--secondary);" required/>
+                I agree to CyberShield's Privacy Policy and consent to being contacted about products and services.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:0.85rem;">
+              Send Secure Message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- INFO CARDS + MAP -->
+        <div class="reveal reveal-delay-2">
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
+                </svg>
+              </div>
+              <div class="info-card-text">
+                <h4>Sales Hotline</h4>
+                <p>+1 (800) 247-3374</p>
+                <span>Mon–Fri, 8AM–8PM EST</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="info-card-text">
+                <h4>Email Support</h4>
+                <p>support@cybershield.io</p>
+                <span>Response within 2 business hours</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="info-card-text">
+                <h4>24/7 Incident Response</h4>
+                <p>security@cybershield.io</p>
+                <span>Active threat? We respond in minutes.</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="info-card-text">
+                <h4>Headquarters</h4>
+                <p>101 CyberShield Plaza, San Francisco, CA 94107</p>
+                <span>Also: London · Singapore · Dubai · Toronto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Icons on Contact Page -->
+          <div style="margin-top:24px;">
+            <h4 style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--secondary);margin-bottom:14px;">Follow Us</h4>
+            <div class="contact-social-row">
+              <a href="#" class="social-icon facebook" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <a href="#" class="social-icon instagram" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="#" class="social-icon twitter" aria-label="X / Twitter">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" class="social-icon linkedin" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Themed Color Map -->
+          <div style="margin-top:24px;">
+            <h4 style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--secondary);margin-bottom:14px;">Our Location</h4>
+            <div class="map-container">
+              <div class="map-overlay">
+                <p>📍 CyberShield HQ · San Francisco, CA</p>
+              </div>
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-122.4194%2C37.7749%2C-122.3694%2C37.8049&layer=mapnik&marker=37.7897%2C-122.3944"
+                loading="lazy"
+                title="CyberShield Office Location"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICE LOCATIONS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// GLOBAL OFFICES</span>
+        <h2>Find Us <span class="gradient-text">Around the World</span></h2>
+      </div>
+      <div class="card-grid card-grid-4">
+        <div class="office-card reveal reveal-delay-1">
+          <div class="office-flag">🇺🇸</div>
+          <div class="office-city">SAN FRANCISCO</div>
+          <p>101 CyberShield Plaza<br/>San Francisco, CA 94107<br/>+1 (415) 247-3374</p>
+        </div>
+        <div class="office-card reveal reveal-delay-2">
+          <div class="office-flag">🇬🇧</div>
+          <div class="office-city">LONDON</div>
+          <p>40 Bishopsgate<br/>London EC2N 4AJ, UK<br/>+44 20 7946 0320</p>
+        </div>
+        <div class="office-card reveal reveal-delay-3">
+          <div class="office-flag">🇸🇬</div>
+          <div class="office-city">SINGAPORE</div>
+          <p>1 Raffles Quay<br/>Singapore 048583<br/>+65 6513 0000</p>
+        </div>
+        <div class="office-card reveal reveal-delay-4">
+          <div class="office-flag">🇦🇪</div>
+          <div class="office-city">DUBAI</div>
+          <p>DIFC Gate Building<br/>Dubai, UAE<br/>+971 4 380 0000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// FAQ</span>
+        <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+      <div style="max-width:760px;margin:0 auto;" class="reveal">
+        <div class="faq-item">
+          <button class="faq-question">How quickly can we deploy CyberShield for our organization? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">Most organizations are fully operational within 2 hours of signing up. Our onboarding wizard guides you through HRIS integration, user import, and your first phishing simulation setup automatically.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Do you offer a free trial? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">Yes — a full 30-day free trial with no credit card required. You get complete platform access including phishing simulations, training modules, and the HR dashboard for up to 100 users.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Is CyberShield GDPR and HIPAA compliant? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">Absolutely. CyberShield is GDPR, HIPAA, SOC 2 Type II, and ISO 27001 certified. All data is encrypted at rest and in transit. EU customers can opt for EU-only data residency on Business and Enterprise plans.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Can we create custom phishing templates? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">Yes, on Business and Enterprise plans. Our template builder lets you create hyper-targeted simulations using your actual company branding, internal systems, and role-specific content to make scenarios as realistic as possible.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What languages is the platform available in? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">CyberShield supports 40+ languages with full UI localization. Training modules are professionally translated — not machine translated — and threat scenarios are adapted for regional attack patterns in each language.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-inject"></div>
+  <script src="js/components.js"></script>
+  <script src="js/global.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        document.querySelectorAll('.faq-question').forEach(b => {
+          b.classList.remove('open');
+          b.nextElementSibling.classList.remove('open');
+        });
+        if (!isOpen) {
+          btn.classList.add('open');
+          answer.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

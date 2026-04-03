@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CyberShield — About Us</title>
+  <link rel="stylesheet" href="css/global.css"/>
+  <style>
+    .team-card {
+      background: var(--secondary-05); border: var(--border-glow); border-radius: 4px;
+      overflow: hidden; transition: var(--transition);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--glow-secondary); }
+    .team-photo {
+      width: 100%; height: 160px; background: var(--secondary-10);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .team-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(transparent 50%, var(--secondary-05) 100%);
+    }
+    .team-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--secondary-20); border: 2px solid var(--secondary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.4rem; color: var(--secondary);
+    }
+    .team-body { padding: 20px; }
+    .team-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .team-role { font-family: var(--font-mono); font-size: 0.72rem; color: var(--secondary); letter-spacing: 1px; margin-bottom: 12px; }
+    .team-body p { font-size: 0.85rem; }
+    .team-socials { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+    .team-social {
+      width: 30px; height: 30px; border: 1px solid var(--secondary-20); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center; color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .team-social:hover { border-color: var(--secondary); color: var(--secondary); }
+
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(var(--secondary-20), var(--secondary), var(--secondary-20));
+      transform: translateX(-50%);
+    }
+    @media (max-width: 767px) { .timeline::before { left: 20px; } }
+
+    .timeline-item {
+      display: flex; gap: 32px; margin-bottom: 40px; position: relative;
+    }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    @media (max-width: 767px) {
+      .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; padding-left: 48px; }
+    }
+
+    .timeline-content {
+      flex: 1; background: var(--secondary-05); border: var(--border-glow); border-radius: 4px;
+      padding: 20px; transition: var(--transition);
+    }
+    .timeline-content:hover { border-color: var(--secondary-50); }
+
+    .timeline-dot {
+      width: 16px; height: 16px; background: var(--secondary); border-radius: 50%;
+      position: absolute; left: 50%; top: 20px; transform: translateX(-50%);
+      box-shadow: var(--glow-secondary); flex-shrink: 0;
+    }
+    @media (max-width: 767px) { .timeline-dot { left: 12px; transform: none; } }
+
+    .timeline-year {
+      font-family: var(--font-display); font-size: 0.9rem; color: var(--secondary);
+      margin-bottom: 8px; letter-spacing: 1px;
+    }
+    .timeline-content h3 { font-size: 1rem; margin-bottom: 8px; }
+    .timeline-content p { font-size: 0.88rem; }
+
+    .value-card {
+      padding: 32px 24px; background: var(--secondary-05); border: var(--border-glow);
+      border-radius: 4px; transition: var(--transition);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--glow-secondary); }
+    .value-num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 900;
+      line-height: 1; margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-inject"></div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="cyber-grid"></div>
+    <div class="container">
+      <div class="page-hero-content" style="animation:fadeInUp 0.8s ease;">
+        <span class="section-tag">// ABOUT CYBERSHIELD</span>
+        <h1>We Are the <span class="gradient-text">Human Firewall</span> Company</h1>
+        <p>Founded by former NSA analysts and Fortune 500 CISOs, we're on a mission to eliminate human error as a cybersecurity risk factor — forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="reveal">
+        <div>
+          <span class="section-tag">// OUR MISSION</span>
+          <h2 style="margin:16px 0 20px;">Eliminating the <span class="gradient-text">Human Vulnerability</span></h2>
+          <p style="margin-bottom:20px;">Cybercriminals don't break in — they walk in. 95% of all cyber incidents trace back to human error. Sophisticated technology can't stop an employee who doesn't know the warning signs.</p>
+          <p style="margin-bottom:28px;">CyberShield was built to change that. We use behavioral science, AI, and gamification to transform every employee — from the CEO to the intern — into a vigilant, security-conscious participant in your defense.</p>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--secondary);" data-count="12" data-suffix="">0</div>
+              <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-dim);letter-spacing:1px;">YEARS IN BUSINESS</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--secondary);" data-count="180" data-suffix="">0</div>
+              <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-dim);letter-spacing:1px;">TEAM MEMBERS</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--secondary);" data-count="42" data-suffix="">0</div>
+              <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-dim);letter-spacing:1px;">COUNTRIES SERVED</div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;border-radius:4px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="CyberShield team" style="width:100%;border-radius:4px;filter:brightness(0.5) saturate(0.4);" loading="lazy"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--secondary-20),transparent);border:var(--border-glow);border-radius:4px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// OUR VALUES</span>
+        <h2>What Drives <span class="gradient-text">Everything We Do</span></h2>
+      </div>
+      <div class="card-grid card-grid-4">
+        <div class="value-card reveal reveal-delay-1">
+          <div class="value-num">01</div>
+          <h3>Human-First</h3>
+          <p>Technology serves people, not the other way around. We design for the human, not the threat.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <div class="value-num">02</div>
+          <h3>Radical Transparency</h3>
+          <p>We show you exactly where your vulnerabilities are — no vague reports, no hidden metrics.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-3">
+          <div class="value-num">03</div>
+          <h3>Continuous Learning</h3>
+          <p>Threats evolve daily. So does our platform. We never ship a static product.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-4">
+          <div class="value-num">04</div>
+          <h3>Measurable Impact</h3>
+          <p>Every feature we build must demonstrably reduce risk. No fluff, no theater.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// LEADERSHIP TEAM</span>
+        <h2>The Minds Behind <span class="gradient-text">CyberShield</span></h2>
+        <p>Former intelligence officers, CISOs, and behavioral scientists united by one mission.</p>
+      </div>
+
+      <div class="card-grid card-grid-4">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-photo"><div class="team-avatar">EM</div></div>
+          <div class="team-body">
+            <h3>Elena Marchetti</h3>
+            <div class="team-role">CEO & CO-FOUNDER</div>
+            <p>Former NSA Cybersecurity Division lead. 18 years in offensive and defensive security operations.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-photo"><div class="team-avatar">RK</div></div>
+          <div class="team-body">
+            <h3>Raj Kapoor</h3>
+            <div class="team-role">CTO & CO-FOUNDER</div>
+            <p>Ex-Google Project Zero. Built threat intelligence systems protecting 200M+ users.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-photo"><div class="team-avatar">JO</div></div>
+          <div class="team-body">
+            <h3>James O'Brien</h3>
+            <div class="team-role">CHIEF SECURITY OFFICER</div>
+            <p>Previous Fortune 50 CISO. Expert in building security cultures at scale across global organizations.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-photo"><div class="team-avatar">AS</div></div>
+          <div class="team-body">
+            <h3>Aisha Singh</h3>
+            <div class="team-role">VP BEHAVIORAL SCIENCE</div>
+            <p>PhD in Behavioral Economics. Pioneer in applying neuroscience to security training effectiveness.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  
+
+  <!-- AWARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// RECOGNITION</span>
+        <h2>Industry <span class="gradient-text">Awards & Certifications</span></h2>
+      </div>
+      <div class="card-grid card-grid-4">
+        <div class="card reveal reveal-delay-1">
+          <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h3>Gartner Magic Quadrant</h3>
+          <p>Leader in Security Awareness Training, 3 years consecutive.</p>
+        </div>
+        <div class="card reveal reveal-delay-2">
+          <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>ISO 27001 Certified</h3>
+          <p>Our platform and operations meet the highest information security standards.</p>
+        </div>
+        <div class="card reveal reveal-delay-3">
+          <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <h3>SOC 2 Type II</h3>
+          <p>Annual third-party security audits confirm our platform meets enterprise trust requirements.</p>
+        </div>
+        <div class="card reveal reveal-delay-4">
+          <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>G2 Top Rated 2024</h3>
+          <p>98% customer satisfaction rating. Top-ranked security awareness platform on G2.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-inject"></div>
+  <script src="js/components.js"></script>
+  <script src="js/global.js"></script>
+</body>
+</html>

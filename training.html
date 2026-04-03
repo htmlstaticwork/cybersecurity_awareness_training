@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CyberShield — Security Training Modules</title>
+  <link rel="stylesheet" href="css/global.css"/>
+  <style>
+    .filter-bar {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; justify-content: center;
+    }
+    .filter-btn {
+      padding: 8px 20px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 1.5px;
+      text-transform: uppercase; background: var(--secondary-05); border: 1px solid var(--secondary-20);
+      color: var(--text-muted); border-radius: 2px; cursor: pointer; transition: var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--secondary-20); border-color: var(--secondary); color: var(--secondary);
+    }
+
+    .module-card {
+      background: var(--secondary-05); border: var(--border-glow); border-radius: 4px;
+      overflow: hidden; transition: var(--transition); display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+    }
+    .module-card:hover { transform: translateY(-4px); box-shadow: var(--glow-secondary); }
+
+    .module-thumb {
+      height: 140px; width: 100%; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .module-thumb-1 { background: linear-gradient(135deg,var(--secondary-20),var(--secondary-05)); }
+    .module-thumb-2 { background: linear-gradient(135deg,var(--accent-20),var(--accent-10)); }
+    .module-thumb-3 { background: linear-gradient(135deg,rgba(0,255,136,0.15),var(--secondary-05)); }
+
+    .module-body { padding: 20px; flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .module-meta {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .module-meta span { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
+    .module-body h3 { font-size: 1rem; margin-bottom: 10px; }
+    .module-body p { font-size: 0.88rem; flex: 1; margin-bottom: 16px; }
+    .module-progress { width: 100%; margin-bottom: 16px; }
+    .module-progress-label {
+      display: flex; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); margin-bottom: 6px;
+    }
+
+    .difficulty {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 8px;
+      border-radius: 2px; margin-bottom: 12px;
+    }
+    .diff-beginner { background: rgba(0,255,136,0.1); color: #00ff88; }
+    .diff-intermediate { background: var(--secondary-10); color: var(--secondary); }
+    .diff-advanced { background: var(--accent-10); color: var(--accent); }
+
+    .cert-banner {
+      background: linear-gradient(135deg, var(--secondary-10), var(--primary));
+      border: var(--border-glow); border-radius: 4px; padding: 40px;
+      text-align: center; margin-top: 60px;
+    }
+
+    /* Learning path */
+    .path-step {
+      display: flex; align-items: center; gap: 24px; padding: 20px;
+      background: var(--secondary-05); border: var(--border-glow); border-radius: 4px;
+      margin-bottom: 2px; transition: var(--transition);
+    }
+    .path-step:hover { background: var(--secondary-10); }
+    .path-num {
+      width: 40px; height: 40px; background: var(--secondary-20); border: 1px solid var(--secondary);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 0.85rem; color: var(--secondary); flex-shrink: 0;
+    }
+    .path-step.done .path-num { background: var(--secondary); color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="header-inject"></div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="cyber-grid"></div>
+    <div class="container">
+      <div class="page-hero-content" style="animation:fadeInUp 0.8s ease;">
+        <span class="section-tag">// TRAINING ACADEMY</span>
+        <h1>Security Training <span class="gradient-text">Modules</span></h1>
+        <p>200+ bite-sized, gamified modules covering every threat vector. Complete at your own pace — or let our AI build a personalized learning path.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="register.html" class="btn btn-primary">Start Learning Free</a>
+          <a href="dashboard.html" class="btn btn-outline">HR Assignment Portal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section style="background:var(--secondary-05);border-bottom:1px solid var(--secondary-20);padding:28px 0;">
+    <div class="container">
+      <div class="card-grid card-grid-4">
+        <div style="text-align:center;">
+          <span class="stat-value" data-count="200" data-suffix="+">0</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);letter-spacing:1.5px;">TRAINING MODULES</div>
+        </div>
+        <div style="text-align:center;">
+          <span class="stat-value" data-count="4" data-suffix=" min avg">0</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);letter-spacing:1.5px;">COMPLETION TIME</div>
+        </div>
+        <div style="text-align:center;">
+          <span class="stat-value" data-count="40" data-suffix="+">0</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);letter-spacing:1.5px;">LANGUAGES</div>
+        </div>
+        <div style="text-align:center;">
+          <span class="stat-value" data-count="97" data-suffix="% pass">0</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);letter-spacing:1.5px;">KNOWLEDGE RETENTION</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE LIBRARY -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// MODULE LIBRARY</span>
+        <h2>Training Modules for <span class="gradient-text">Every Threat</span></h2>
+        <p>Continuously updated with the latest threat intelligence. New modules added every week.</p>
+      </div>
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active">All Topics</button>
+        <button class="filter-btn">Phishing</button>
+        <button class="filter-btn">Social Engineering</button>
+        <button class="filter-btn">Password Security</button>
+        <button class="filter-btn">Data Protection</button>
+        <button class="filter-btn">Remote Work</button>
+        <button class="filter-btn">Compliance</button>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <!-- Module 1 -->
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-thumb module-thumb-1">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated Jan 2025</span>
+              <span>⏱ 4 min</span>
+              <span>🏆 150 XP</span>
+            </div>
+            <span class="difficulty diff-beginner">● BEGINNER</span>
+            <h3>Phishing Recognition 101</h3>
+            <p>Identify the telltale signs of phishing emails, including spoofed domains, urgency tactics, and malicious links.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>94%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:94%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-thumb module-thumb-2">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated Feb 2025</span>
+              <span>⏱ 6 min</span>
+              <span>🏆 200 XP</span>
+            </div>
+            <span class="difficulty diff-intermediate">● INTERMEDIATE</span>
+            <h3>Social Engineering Defense</h3>
+            <p>Learn to identify vishing, pretexting, and baiting attacks. Understand psychological manipulation tactics used by threat actors.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>87%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:87%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-card reveal reveal-delay-3">
+          <div class="module-thumb module-thumb-3">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated Mar 2025</span>
+              <span>⏱ 5 min</span>
+              <span>🏆 175 XP</span>
+            </div>
+            <span class="difficulty diff-intermediate">● INTERMEDIATE</span>
+            <h3>Password Hygiene & MFA</h3>
+            <p>Master password creation strategies, secure storage practices, and why multi-factor authentication is your last line of defense.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>91%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:91%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-thumb module-thumb-1">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated Apr 2025</span>
+              <span>⏱ 8 min</span>
+              <span>🏆 250 XP</span>
+            </div>
+            <span class="difficulty diff-advanced">● ADVANCED</span>
+            <h3>Ransomware Response Protocol</h3>
+            <p>Understand ransomware delivery methods, recognize infection signs, and follow the correct incident response chain of command.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>78%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:78%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-thumb module-thumb-2">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated May 2025</span>
+              <span>⏱ 7 min</span>
+              <span>🏆 225 XP</span>
+            </div>
+            <span class="difficulty diff-advanced">● ADVANCED</span>
+            <h3>Data Classification & DLP</h3>
+            <p>Learn data classification frameworks, proper handling of sensitive data, and how to prevent accidental data leakage.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>82%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:82%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="module-card reveal reveal-delay-3">
+          <div class="module-thumb module-thumb-3">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="module-body">
+            <div class="module-meta">
+              <span>📅 Updated Jun 2025</span>
+              <span>⏱ 5 min</span>
+              <span>🏆 175 XP</span>
+            </div>
+            <span class="difficulty diff-beginner">● BEGINNER</span>
+            <h3>Safe Remote Work Practices</h3>
+            <p>Secure your home office setup, public Wi-Fi usage, VPN best practices, and video conferencing security guidelines.</p>
+            <div class="module-progress">
+              <div class="module-progress-label"><span>Completion</span><span>96%</span></div>
+              <div class="progress-bar"><div class="progress-bar-fill" style="width:96%;"></div></div>
+            </div>
+            <a href="#" class="btn btn-primary" style="width:100%;">Start Module →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING PATH -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// LEARNING PATH</span>
+        <h2>Recommended <span class="gradient-text">Security Journey</span></h2>
+        <p>Follow our curated learning path from security novice to certified human firewall champion.</p>
+      </div>
+
+      <div style="max-width:700px;margin:0 auto;" class="reveal">
+        <div class="path-step done">
+          <div class="path-num">✓</div>
+          <div>
+            <h4 style="margin-bottom:4px;">Foundation: Security Awareness Basics</h4>
+            <p style="font-size:0.85rem;">4 modules · 20 min · 600 XP</p>
+          </div>
+          <span class="badge badge-secondary" style="margin-left:auto;">COMPLETED</span>
+        </div>
+        <div class="path-step" style="border-color:var(--secondary-50);">
+          <div class="path-num" style="border-color:var(--secondary);background:var(--secondary-20);">02</div>
+          <div>
+            <h4 style="margin-bottom:4px;">Intermediate: Threat Recognition & Response</h4>
+            <p style="font-size:0.85rem;">6 modules · 35 min · 1,200 XP</p>
+          </div>
+          <span class="badge badge-accent" style="margin-left:auto;">IN PROGRESS</span>
+        </div>
+        <div class="path-step">
+          <div class="path-num">03</div>
+          <div>
+            <h4 style="margin-bottom:4px;">Advanced: Incident Response & Forensics</h4>
+            <p style="font-size:0.85rem;">5 modules · 40 min · 1,500 XP</p>
+          </div>
+          <span class="badge" style="background:var(--secondary-05);color:var(--text-dim);margin-left:auto;">LOCKED</span>
+        </div>
+        <div class="path-step">
+          <div class="path-num">04</div>
+          <div>
+            <h4 style="margin-bottom:4px;">Expert: Security Champion Certification</h4>
+            <p style="font-size:0.85rem;">8 modules + exam · 60 min · 3,000 XP</p>
+          </div>
+          <span class="badge" style="background:var(--secondary-05);color:var(--text-dim);margin-left:auto;">LOCKED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATION -->
+  <section class="section">
+    <div class="container">
+      <div class="cert-banner reveal">
+        <span class="section-tag">// CERTIFICATION</span>
+        <h2 style="margin:16px 0 16px;">Earn Your <span class="gradient-text">Certified Human Firewall</span> Badge</h2>
+        <p style="max-width:600px;margin:0 auto 28px;">Complete the full learning path and pass the final assessment to receive your CyberShield CHF certification — recognized by leading organizations worldwide.</p>
+        <a href="register.html" class="btn btn-primary">Start Learning Free →</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-inject"></div>
+  <script src="js/components.js"></script>
+  <script src="js/global.js"></script>
+  <script>
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
