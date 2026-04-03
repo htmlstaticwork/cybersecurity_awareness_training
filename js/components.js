@@ -43,10 +43,6 @@
   </header>
 
   <nav class="mobile-nav" id="mobile-nav">
-    <div class="mobile-nav-toggles" style="display:flex;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--secondary-10);">
-      <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL" style="flex:1;">RTL</button>
-      <button class="toggle-btn theme-toggle" aria-label="Toggle theme" style="flex:1;">☀️</button>
-    </div>
     <a href="index.html" class="nav-link">Home</a>
     <a href="home2.html" class="nav-link">Solution</a>
     <a href="training.html" class="nav-link">Train</a>
@@ -54,7 +50,11 @@
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
     <a href="dashboard.html" class="nav-link">Dashboard</a>
-    <a href="login.html" class="btn btn-outline" style="width:100%;margin-top:10px;">Login</a>
+    <a href="login.html" class="btn btn-outline" style="width:100%;margin-top:20px;margin-bottom:10px;">Login</a>
+    <div class="mobile-nav-toggles" style="display:flex;gap:12px;margin-top:10px;padding-top:20px;border-top:1px solid var(--secondary-10);">
+      <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL" style="flex:1;">RTL</button>
+      <button class="toggle-btn theme-toggle" aria-label="Toggle theme" style="flex:1;">☀️</button>
+    </div>
   </nav>
   `;
 
@@ -134,7 +134,7 @@
     </div>
 
     <div class="footer-bottom container">
-      <p>© 2025 CyberShield Corp. All rights reserved. <span style="color:var(--secondary);">|</span> </p>
+      <p>© 2026 CyberShield Corp. All rights reserved. <span style="color:var(--secondary);">|</span> </p>
       
     </div>
   </footer>

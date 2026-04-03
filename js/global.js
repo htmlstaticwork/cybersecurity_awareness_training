@@ -318,15 +318,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ============================================
-  // PARALLAX ON HERO BG
-  // ============================================
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     document.querySelectorAll('.hero-section').forEach(hero => {
       hero.style.backgroundPositionY = `calc(center + ${scrolled * 0.3}px)`;
     });
   });
+
+  // ============================================
+  // BACK TO TOP BUTTON
+  // ============================================
+  (function initBackToTop() {
+    const btn = document.createElement('button');
+    btn.id = 'back-to-top';
+    btn.innerHTML = '↑';
+    btn.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 
   console.log('%c[CYBER SYSTEMS ONLINE]', 'color: #00d4ff; font-family: monospace; font-size: 14px;');
 });

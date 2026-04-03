@@ -83,7 +83,7 @@
     .intel-dot-red { background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: attackPulse 1.5s infinite; }
     .intel-dot-yellow { background: #ffa500; box-shadow: 0 0 6px #ffa500; }
     .intel-dot-blue { background: var(--secondary); box-shadow: 0 0 6px var(--secondary); }
-    .intel-content {}
+    .intel-content { flex: 1; }
     .intel-title { font-size: 0.88rem; color: var(--text-primary); margin-bottom: 4px; }
     .intel-meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
 
@@ -101,7 +101,7 @@
         <span class="section-tag">// THREAT INTELLIGENCE CENTER</span>
         <h1>Real-Time <span class="gradient-text">Threat Feed</span></h1>
         <p>Live intelligence on emerging threats, attack vectors, and vulnerabilities targeting organizations like yours. Stay ahead of attackers with AI-curated insights.</p>
-        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;justify-content:center;">
           <a href="training.html" class="btn btn-accent">Train Against These Threats</a>
           <a href="dashboard.html" class="btn btn-outline">View Risk Dashboard</a>
         </div>
@@ -152,7 +152,7 @@
           <h3>CEO Fraud Spear Phishing</h3>
           <p>Sophisticated AI-generated spear phishing targeting CFOs, masquerading as CEO wire transfer requests. 47 orgs affected this week.</p>
           <div class="threat-date">⏰ Detected 2 hours ago · Source: Threat Actor APT-41X</div>
-          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now →</a>
         </div>
 
         <div class="threat-card reveal reveal-delay-2">
@@ -163,7 +163,7 @@
           <h3>Vishing Campaign: IT Helpdesk</h3>
           <p>Phone-based attacks impersonating IT support, requesting credential resets. 12 confirmed incidents in financial sector.</p>
           <div class="threat-date">⏰ Detected 6 hours ago · Source: CISA Advisory</div>
-          <a href="training.html" class="btn btn-outline" style="margin-top:16px;width:100%;">Train Now</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now →</a>
         </div>
 
         <div class="threat-card reveal reveal-delay-3">
@@ -174,7 +174,7 @@
           <h3>MFA Fatigue Attacks</h3>
           <p>Attackers bombarding employees with MFA push notifications hoping for accidental approval. 8 enterprise breaches confirmed.</p>
           <div class="threat-date">⏰ Detected 1 day ago · Source: Microsoft Sentinel</div>
-          <a href="training.html" class="btn btn-outline" style="margin-top:16px;width:100%;">Train Now</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now →</a>
         </div>
 
         <div class="threat-card reveal reveal-delay-1">
@@ -185,7 +185,7 @@
           <h3>QR Code Phishing (Quishing)</h3>
           <p>Malicious QR codes embedded in legitimate-looking invoices and parking tickets, bypassing email security filters.</p>
           <div class="threat-date">⏰ Detected 2 days ago · Source: IBM X-Force</div>
-          <a href="training.html" class="btn btn-outline" style="margin-top:16px;width:100%;">Train Now</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now →</a>
         </div>
 
         <div class="threat-card reveal reveal-delay-2">
@@ -196,7 +196,7 @@
           <h3>Slack / Teams Social Engineering</h3>
           <p>Attackers impersonating colleagues on collaboration platforms to exfiltrate credentials and deploy malware via file shares.</p>
           <div class="threat-date">⏰ Detected 3 days ago · Source: CrowdStrike Intel</div>
-          <a href="training.html" class="btn btn-outline" style="margin-top:16px;width:100%;">Train Now</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Train Now →</a>
         </div>
 
         <div class="threat-card reveal reveal-delay-3">
@@ -207,7 +207,7 @@
           <h3>AI-Generated Deepfake Audio</h3>
           <p>Voice cloning of executives used in fraud attempts. 3 organizations report near-miss incidents with million-dollar transfers.</p>
           <div class="threat-date">⏰ Detected 5 days ago · Source: Recorded Future</div>
-          <a href="training.html" class="btn btn-outline" style="margin-top:16px;width:100%;">Learn More</a>
+          <a href="training.html" class="btn btn-accent" style="margin-top:16px;width:100%;">Learn More →</a>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@
       }
 
       .dash-main {
-        padding-top: 80px;
+        padding-top: 100px;
       }
     }
 
@@ -192,7 +192,20 @@
 
     .dash-title h1 {
       font-size: 1.6rem;
-      margin-bottom: 4px;
+      margin-bottom: 12px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    .dash-title h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--secondary);
     }
 
     .dash-title p {
@@ -729,11 +742,11 @@
           </div>
           <button class="btn btn-outline assign-btn"
             onclick="document.getElementById('assignModal').classList.add('open')">
-            + Assign Training
+            + Assign Training →
           </button>
           <button class="btn btn-accent assign-btn"
             onclick="document.getElementById('phishModal').classList.add('open')">
-            🎣 Run Simulation
+            🎣 Run Simulation →
           </button>
         </div>
       </div>

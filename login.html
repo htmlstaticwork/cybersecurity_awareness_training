@@ -15,7 +15,8 @@
       background-size: cover;
       background-position: center;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;
+      padding: 40px 20px;
     }
 
     body::before {
@@ -212,14 +213,14 @@
           </div>
         </div>
 
-        <div class="forgot-link"><a href="#">Forgot password?</a></div>
-
-        <div style="margin-bottom:20px;">
-          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text-muted);">
+        <div style="margin-bottom:20px; margin-top: -10px;">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.82rem;color:var(--text-dim);">
             <input type="checkbox" style="accent-color:var(--secondary);"/>
             Remember this device for 30 days
           </label>
         </div>
+
+        <div class="forgot-link"><a href="#">Forgot password?</a></div>
 
         <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:0.9rem;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
