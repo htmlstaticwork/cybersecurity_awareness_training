@@ -47,7 +47,10 @@
       margin-top: 48px;
       width: 100%;
     }
-    @media (max-width: 1023px) { .hero2-right { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero2-right { grid-template-columns: repeat(2, 1fr); }
+      .hero2-right .hero2-metric:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 100%; max-width: 350px; }
+    }
     @media (max-width: 767px) { .hero2-right { grid-template-columns: 1fr; } }
 
     .hero2-metric {
@@ -270,6 +273,12 @@
       .plug-stack-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .plug-stack-grid > .integration-logo:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: 400px;
+      }
     }
 
     /* Mobile (One by One) */
@@ -398,6 +407,7 @@
     }
     .cta2-form h3 { text-align: center; margin-bottom: 24px; font-size: 1.2rem; }
   </style>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
 <body>
   <div id="header-inject"></div>
@@ -416,7 +426,7 @@
             <span class="gradient-text">Before They Start</span>
           </h1>
           <p style="font-size:1.1rem;margin-bottom:32px;max-width:500px;">Comprehensive cybersecurity solutions engineered for enterprise. From phishing defense to full compliance automation — one unified platform.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
             <a href="training.html" class="btn btn-primary">Explore Solutions</a>
             <a href="contact.html" class="btn btn-outline">Book a Demo</a>
           </div>
@@ -759,11 +769,12 @@
             </div>
             <div class="form-group">
               <label>Team Size</label>
-              <select class="form-control">
-                <option>1–50 employees</option>
-                <option>51–200 employees</option>
-                <option>201–1,000 employees</option>
-                <option>1,000+ employees</option>
+              <select class="form-control" required>
+                <option value="">Select size</option>
+                <option>1–50</option>
+                <option>51–200</option>
+                <option>201–1000</option>
+                <option>1000+</option>
               </select>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;">

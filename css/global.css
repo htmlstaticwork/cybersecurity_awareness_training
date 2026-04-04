@@ -334,6 +334,13 @@ img {
   .card-grid-2 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .card-grid-3 > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 /* ≤360px: 1 column */
@@ -779,7 +786,8 @@ img {
   }
 
   /* Move toggles to hamburger menu on tablet/mobile */
-  .navbar-right .toggle-btn {
+  .navbar-right .toggle-btn,
+  .navbar-right .btn {
     display: none;
   }
 }
@@ -802,10 +810,6 @@ img {
 @media (max-width: 767px) {
   .brand-name {
     font-size: 1rem;
-  }
-
-  .navbar-right .btn {
-    display: none;
   }
 }
 
@@ -1298,6 +1302,8 @@ img {
 }
 
 select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300d4ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1584,4 +1590,51 @@ textarea.form-control {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+}
+
+/* ============================================
+   BACK TO TOP BUTTON
+   ============================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  border: 1px solid var(--secondary-50);
+  border-radius: 4px;
+  color: var(--secondary);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  box-shadow: var(--glow-secondary);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  bottom: 40px;
+}
+
+#back-to-top:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px var(--secondary);
+}
+
+#back-to-top svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+#back-to-top:hover svg {
+  transform: translateY(-2px);
 }
