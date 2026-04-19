@@ -51,6 +51,15 @@
       position: relative;
     }
 
+    .auth-utility-controls {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 2000;
+    }
+
     .reg-brand-center {
       display: flex;
       flex-direction: row;
@@ -61,7 +70,10 @@
       text-decoration: none;
     }
     .reg-brand-center .brand-name {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .reg-brand-center:hover .brand-logo {
@@ -320,11 +332,12 @@
   <!-- NO HEADER / FOOTER on register page -->
   <div class="cyber-grid" style="position:fixed;inset:0;"></div>
 
+  <div class="auth-utility-controls">
+    <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL">RTL</button>
+    <button class="toggle-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+  </div>
+
   <div class="register-wrap">
-    <div style="position:absolute; top: -32px; inset-inline-end: 20px; display:flex; gap:12px; z-index:100;">
-      <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL" style="width:32px;height:32px;font-size:0.65rem;">RTL</button>
-      <button class="toggle-btn theme-toggle" aria-label="Toggle theme" style="width:32px;height:32px;font-size:0.8rem;">☀️</button>
-    </div>
     <div class="register-box">
       <a href="index.html" class="reg-brand-center">
         <div class="brand-logo pulse-glow">

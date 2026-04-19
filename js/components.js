@@ -17,7 +17,7 @@
               <path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <span class="brand-name">CYBER<span></span></span>
+          <span class="brand-name">CYBER</span>
         </a>
       </div>
 
@@ -72,7 +72,7 @@
                 <path d="M2 12l10 5 10-5"/>
               </svg>
             </div>
-            <span class="brand-name">CYBER<span></span></span>
+            <span class="brand-name">CYBER</span>
           </a>
           <p style="max-width:300px;">Empowering organizations to build human firewalls. Transform your employees from the weakest link to your strongest cybersecurity asset.</p>
           <div class="social-icons">

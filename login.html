@@ -50,6 +50,15 @@
       position: relative;
     }
 
+    .auth-utility-controls {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 2000;
+    }
+
     @media (max-width: 480px) {
       .login-box {
         padding: 28px 20px;
@@ -66,7 +75,10 @@
     }
 
     .login-logo .brand-name {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .login-title {
@@ -248,11 +260,12 @@
   <div class="corner-deco bl"></div>
   <div class="corner-deco br"></div>
 
+  <div class="auth-utility-controls">
+    <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL">RTL</button>
+    <button class="toggle-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+  </div>
+
   <div class="login-wrap">
-    <div style="position:absolute; top: -32px; inset-inline-end: 20px; display:flex; gap:12px; z-index:100;">
-      <button class="toggle-btn rtl-toggle" aria-label="Toggle RTL" style="width:32px;height:32px;font-size:0.65rem;">RTL</button>
-      <button class="toggle-btn theme-toggle" aria-label="Toggle theme" style="width:32px;height:32px;font-size:0.8rem;">☀️</button>
-    </div>
     <div class="login-box">
       <a href="index.html" class="login-logo" style="text-decoration:none;">
         <div class="brand-logo pulse-glow">

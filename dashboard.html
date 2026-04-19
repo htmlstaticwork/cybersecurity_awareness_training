@@ -82,7 +82,10 @@
     }
 
     .sidebar-header .brand-name {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .dash-sidebar-close {
@@ -214,6 +217,13 @@
       .header-actions {
         justify-content: center;
         width: 100%;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .welcome-line .page-title {
+        font-size: 1.4rem !important;
+        padding-left: 60px !important;
       }
     }
 
@@ -701,7 +711,7 @@
               <path d="M2 12l10 5 10-5" />
             </svg>
           </div>
-          <span class="brand-name">CYBER<span></span></span>
+          <span class="brand-name">CYBER</span>
         </a>
         <button class="dash-sidebar-close" id="dash-close" aria-label="Close menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -777,7 +787,9 @@
       <!-- DASHBOARD HEADER -->
       <header class="dashboard-header">
         <div class="welcome-line">
-          Welcome back, <span>Security Admin</span>.
+          <h1 class="page-title" style="font-size: 2.2rem; margin-bottom: 12px;">
+            Welcome back, <span style="color: var(--secondary);">Security Admin</span>.
+          </h1>
         </div>
         <div class="header-actions">
           <button class="toggle-btn theme-toggle" aria-label="Toggle Theme">☀️</button>

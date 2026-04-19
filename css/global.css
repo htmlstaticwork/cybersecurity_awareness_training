@@ -644,6 +644,7 @@ img {
   letter-spacing: 2px;
   color: var(--text-primary);
   transition: var(--transition);
+  text-transform: uppercase;
 }
 
 .brand-name span {
@@ -701,12 +702,17 @@ img {
   justify-content: flex-end;
 }
 
+.navbar-right .btn {
+  height: 38px;
+  padding: 0 20px;
+}
+
 .toggle-btn {
   background: var(--secondary-10);
   border: 1px solid var(--secondary-50);
   color: var(--secondary);
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -733,7 +739,8 @@ img {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   width: auto;
-  padding: 0 10px;
+  height: 38px;
+  padding: 0 12px;
   letter-spacing: 1px;
 }
 
