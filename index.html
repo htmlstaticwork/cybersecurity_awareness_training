@@ -241,18 +241,27 @@
       display: block;
     }
 
-    .about-text { display: flex; flex-direction: column; gap: 24px; }
+    .about-text { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 24px; 
+      text-align: center;
+      align-items: center;
+    }
     .about-text h2 { margin-bottom: 0; }
+    .about-text > p { max-width: 600px; }
 
     .about-feature {
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       gap: 16px;
       padding: 20px;
       background: var(--secondary-05);
       border: var(--border-glow);
       border-radius: 4px;
       transition: var(--transition);
+      text-align: center;
     }
     .about-feature:hover {
       background: var(--secondary-10);

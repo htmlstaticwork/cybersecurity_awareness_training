@@ -31,6 +31,16 @@
       font-family: var(--font-mono); font-size: 0.68rem;
       color: var(--text-dim); margin-top: 16px;
     }
+    .attack-map-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .attack-map-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .map-section { background: var(--secondary-05); border: var(--border-glow); border-radius: 4px; overflow: hidden; }
 
@@ -103,7 +113,7 @@
         <h1>Real-Time <span class="gradient-text">Threat Feed</span></h1>
         <p>Live intelligence on emerging threats, attack vectors, and vulnerabilities targeting organizations like yours. Stay ahead of attackers with AI-curated insights.</p>
         <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;justify-content:center;">
-          <a href="training.html" class="btn btn-accent">Train Against These Threats</a>
+          <a href="training.html" class="btn btn-accent">Train Against Threat</a>
           <a href="dashboard.html" class="btn btn-outline">View Risk Dashboard</a>
         </div>
       </div>
@@ -222,7 +232,7 @@
         <h2>Live Attack <span class="gradient-text">Visualization</span></h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;" class="reveal">
+      <div class="attack-map-grid reveal">
         <div class="map-section">
           <div class="globe-container">
             <!-- Simulated attack map -->
