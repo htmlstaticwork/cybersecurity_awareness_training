@@ -48,7 +48,7 @@
       z-index: 1001;
       display: flex;
       flex-direction: column;
-      box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+      box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
     }
 
     @media (max-width: 1023px) {
@@ -175,7 +175,7 @@
 
     @media (max-width: 1023px) {
       .dashboard-header {
-        padding-left: 80px; 
+        padding-left: 80px;
         padding-right: 20px;
         margin: -20px -16px 20px -16px;
       }
@@ -190,6 +190,7 @@
         text-align: center;
         gap: 12px;
       }
+
       .header-actions {
         justify-content: center;
         width: 100%;
@@ -333,9 +334,11 @@
         </div>
 
         <div class="sidebar-section" style="margin-top:auto;border-top:1px solid var(--secondary-10);padding-top:16px;">
-          
+
           <a class="sidebar-link" href="index.html" style="color:var(--accent);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
+            </svg>
             Log Out
           </a>
         </div>
@@ -363,7 +366,8 @@
           </div>
           <button class="toggle-btn" aria-label="User Profile">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
           </button>
         </div>
@@ -377,7 +381,7 @@
 
       <div class="employee-actions">
         <input type="text" class="search-input" placeholder="Search by name, email, or dept...">
-        
+
       </div>
 
       <div class="cyber-table-wrap">
@@ -393,28 +397,32 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Sarah Jenkins</strong><br><span style="font-size:0.75rem; color:var(--text-dim);">s.jenkins@cybershield.com</span></td>
+              <td><strong>Sarah Jenkins</strong><br><span
+                  style="font-size:0.75rem; color:var(--text-dim);">s.jenkins@cybershield.com</span></td>
               <td>Engineering</td>
               <td><span class="badge badge-secondary">Low</span></td>
               <td>Passed all 5</td>
               <td><a href="#" class="btn btn-outline" style="padding:4px 12px; font-size:0.7rem;">Profile</a></td>
             </tr>
             <tr>
-              <td><strong>David Miller</strong><br><span style="font-size:0.75rem; color:var(--text-dim);">d.miller@cybershield.com</span></td>
+              <td><strong>David Miller</strong><br><span
+                  style="font-size:0.75rem; color:var(--text-dim);">d.miller@cybershield.com</span></td>
               <td>Human Resources</td>
               <td><span class="badge badge-accent">High</span></td>
               <td>Failed last test</td>
               <td><a href="#" class="btn btn-outline" style="padding:4px 12px; font-size:0.7rem;">Profile</a></td>
             </tr>
             <tr>
-              <td><strong>Elena Petrova</strong><br><span style="font-size:0.75rem; color:var(--text-dim);">e.petrova@cybershield.com</span></td>
+              <td><strong>Elena Petrova</strong><br><span
+                  style="font-size:0.75rem; color:var(--text-dim);">e.petrova@cybershield.com</span></td>
               <td>Finance</td>
               <td><span class="badge badge-secondary">Mid</span></td>
               <td>3/5 simulation score</td>
               <td><a href="#" class="btn btn-outline" style="padding:4px 12px; font-size:0.7rem;">Profile</a></td>
             </tr>
             <tr>
-              <td><strong>Marcus Wong</strong><br><span style="font-size:0.75rem; color:var(--text-dim);">m.wong@cybershield.com</span></td>
+              <td><strong>Marcus Wong</strong><br><span
+                  style="font-size:0.75rem; color:var(--text-dim);">m.wong@cybershield.com</span></td>
               <td>Product</td>
               <td><span class="badge badge-secondary">Low</span></td>
               <td>Perfect streak</td>
@@ -454,4 +462,5 @@
     });
   </script>
 </body>
+
 </html>

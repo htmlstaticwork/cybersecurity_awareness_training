@@ -158,6 +158,25 @@
       50% { transform: translateY(-12px); }
     }
 
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 120px 0 80px;
+        min-height: auto;
+      }
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
     /* SECTION 2: SERVICES */
     .services-icon {
       width: 64px;

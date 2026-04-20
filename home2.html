@@ -51,7 +51,19 @@
       .hero2-right { grid-template-columns: repeat(2, 1fr); }
       .hero2-right .hero2-metric:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 100%; max-width: 350px; }
     }
-    @media (max-width: 767px) { .hero2-right { grid-template-columns: 1fr; } }
+    @media (max-width: 767px) { 
+      .hero2-right { grid-template-columns: 1fr; } 
+      .hero2-section { padding: 120px 0 80px; min-height: auto; }
+      /* Equal-size hero buttons on 360px */
+      .hero2-left div[style] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .hero2-left div[style] .btn {
+        width: 100% !important;
+        justify-content: center;
+      }
+    }
 
     .hero2-metric {
       background: var(--primary-80);
@@ -430,20 +442,7 @@
             <a href="training.html" class="btn btn-primary">Explore Solutions</a>
             <a href="contact.html" class="btn btn-outline">Book a Demo</a>
           </div>
-          <div style="display:flex;gap:32px;margin-top:36px;padding-top:28px;border-top:1px solid var(--secondary-20);flex-wrap:wrap;">
-            <div>
-              <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--secondary);" data-count="2000" data-suffix="+">0</div>
-              <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:1.5px;color:var(--text-dim);">ENTERPRISE CLIENTS</div>
-            </div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--secondary);" data-count="50" data-suffix="M+">0</div>
-              <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:1.5px;color:var(--text-dim);">SIMULATIONS RUN</div>
-            </div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--secondary);" data-count="99" data-suffix=".9%">0</div>
-              <div style="font-family:var(--font-mono);font-size:0.65px;letter-spacing:1.5px;color:var(--text-dim);font-size:0.65rem;">UPTIME SLA</div>
-            </div>
-          </div>
+          
         </div>
 
         <div class="hero2-right">

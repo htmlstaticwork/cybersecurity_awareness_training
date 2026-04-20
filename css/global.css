@@ -881,10 +881,25 @@ img {
   text-align: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .page-hero {
     min-height: auto;
-    padding: 60px 0;
+    padding: 120px 0 80px;
+  }
+
+  /* Equal-size buttons in all hero sections on mobile */
+  .page-hero-content > div .btn,
+  .page-hero-content div[style*="flex"] .btn {
+    width: 100%;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  /* Force equal widths on hero CTA button containers */
+  .page-hero-content div[style*="flex"],
+  .page-hero-content div[style*="gap"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 }
 
@@ -910,6 +925,17 @@ img {
 
 .page-hero-content .section-tag {
   margin-bottom: 20px;
+  /* High-contrast override for hero background image context */
+  background: rgba(10, 14, 26, 0.85);
+  border-color: var(--secondary-50);
+  color: var(--secondary);
+  backdrop-filter: blur(6px);
+}
+
+[data-theme="light"] .page-hero-content .section-tag {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 
 .page-hero-content h1 {
@@ -919,6 +945,26 @@ img {
 .page-hero-content p {
   font-size: 1.15rem;
   color: var(--text-muted);
+}
+
+/* ============================================
+   HERO SECTION-TAG — high contrast on all hero types
+   ============================================ */
+.hero-content .section-tag,
+.hero2-inner .section-tag,
+.page-hero-content .section-tag {
+  background: rgba(10, 14, 26, 0.85);
+  border-color: var(--secondary-50);
+  color: var(--secondary);
+  backdrop-filter: blur(6px);
+}
+
+[data-theme="light"] .hero-content .section-tag,
+[data-theme="light"] .hero2-inner .section-tag,
+[data-theme="light"] .page-hero-content .section-tag {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 
 /* ============================================
