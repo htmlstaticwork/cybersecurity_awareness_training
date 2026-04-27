@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Cybersecurity Awareness Training (Corporate)</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           GLOBAL STYLES
+           ========================================================================== */
+        :root {
+            --primary-color: #00d2ff;
+            --primary-dark: #0072ff;
+            --accent-color: #7000ff;
+            --bg-dark: #0a0b10;
+            --card-bg: #161b22;
+            --sidebar-bg: #0d1117;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+            --sidebar-width: 280px;
+            --transition: all 0.3s ease;
+            --container-max: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: var(--primary-color);
+        }
+
+        pre {
+            background: #010409;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==========================================================================
+           LAYOUT STRUCTURE
+           ========================================================================== */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            width: 0%;
+        }
+
+        /* ==========================================================================
+           SIDEBAR NAVIGATION
+           ========================================================================== */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .sidebar-brand i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .sidebar-brand span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-list {
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .download-btn {
+            margin-top: auto;
+            background: linear-gradient(45deg, var(--primary-dark), var(--accent-color));
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+        }
+
+        /* Mobile Sidebar Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            z-index: 1001;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ==========================================================================
+           CONTENT AREA
+           ========================================================================== */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 4rem;
+            max-width: calc(var(--container-max) + var(--sidebar-width));
+        }
+
+        .section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 4rem;
+        }
+
+        .intro-header {
+            margin-bottom: 4rem;
+        }
+
+        .intro-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        /* ==========================================================================
+           CARD STYLES
+           ========================================================================== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary-color);
+            background: rgba(22, 27, 34, 0.8);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .step-list {
+            margin-top: 1.5rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .step-num {
+            background: var(--primary-dark);
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN
+           ========================================================================== */
+        
+        /* Large Screens (1440px+) */
+        @media (min-width: 1440px) {
+            .main-content {
+                padding: 5rem 10rem;
+            }
+        }
+
+        /* Desktop (1024px) */
+        @media (max-width: 1024px) {
+            .main-content {
+                padding: 3rem;
+            }
+        }
+
+        /* Tablet (768px) */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .sidebar {
+                left: -100%;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 5rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .intro-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Mobile (360px) */
+        @media (max-width: 480px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ==========================================================================
+           PRINT STYLES
+           ========================================================================== */
+        @media print {
+            .sidebar, .menu-toggle, .progress-container, .download-btn {
+                display: none !important;
+            }
+            .main-content {
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            body {
+                background: #fff;
+                color: #000;
+            }
+            .card {
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            h1, h2, h3 {
+                color: #000 !important;
+                -webkit-text-fill-color: initial !important;
+            }
+            .section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Tracking Indicator -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Mobile Navigation Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <div class="app-container">
+        <!-- ==========================================================================
+             SIDEBAR NAVIGATION
+             ========================================================================== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-shield-halved"></i>
+                <span>CYBERDOCS</span>
+            </div>
+            
+            <nav class="nav-list">
+                <div class="nav-item">
+                    <a href="#welcome" class="nav-link active">
+                        <i class="fas fa-home"></i> Welcome
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#installation" class="nav-link">
+                        <i class="fas fa-download"></i> Installation
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#customization" class="nav-link">
+                        <i class="fas fa-paint-brush"></i> Customization
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#structure" class="nav-link">
+                        <i class="fas fa-sitemap"></i> Page Structure
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#credits" class="nav-link">
+                        <i class="fas fa-award"></i> Credits
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#changelog" class="nav-link">
+                        <i class="fas fa-history"></i> Changelog
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#support" class="nav-link">
+                        <i class="fas fa-headset"></i> Support
+                    </a>
+                </div>
+            </nav>
+
+            <!-- TODO: Replace brand colors -->
+            <button class="download-btn" onclick="generatePDF()">
+                <i class="fas fa-file-pdf"></i> Download PDF
+            </button>
+        </aside>
+
+        <!-- ==========================================================================
+             MAIN CONTENT
+             ========================================================================== -->
+        <main class="main-content">
+            
+            <!-- Welcome Section -->
+            <section id="welcome" class="section">
+                <div class="intro-header">
+                    <span class="badge">Version 1.0.0</span>
+                    <h1>Documentation</h1>
+                    <p>Welcome to the official documentation for the <strong>Cybersecurity Awareness Training Platform</strong>. This guide will help you set up, customize, and manage your corporate training website efficiently.</p>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Quick Start</h3>
+                        <p>Learn how to get the website running on your local machine and deploy it to a production server in minutes.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-palette"></i></div>
+                        <h3>Theme System</h3>
+                        <p>Understand the CSS variable system to quickly align the branding with your corporate identity.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation Guide -->
+            <!-- ================= INSTALLATION SECTION ================= -->
+            <section id="installation" class="section">
+                <h2>1. Installation Guide</h2>
+                <p>Follow these steps to set up the project environment.</p>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Step 1: Local Environment</h3>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <p>Extract the provided <code>.zip</code> file to your desired workspace.</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <p>Open the folder in **VS Code** or any preferred code editor.</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <p>Use the **Live Server** extension (VS Code) to launch the project locally at <code>http://127.0.0.1:5500</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Step 2: Hosting Deployment</h3>
+                    <p>Since this is a static website, you can host it on any modern platform:</p>
+                    <ul style="margin-top: 1rem; color: var(--text-muted);">
+                        <li>• <strong>Netlify:</strong> Drag and drop the root folder.</li>
+                        <li>• <strong>Vercel:</strong> Push to GitHub and connect the repository.</li>
+                        <li>• <strong>GitHub Pages:</strong> Enable via repository settings.</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Folder Structure</h3>
+                    <pre>
+/root
+  ├── /css            # Global and Page specific styles
+  ├── /js             # Interactive logic and components
+  ├── /documentation  # This documentation file
+  ├── favicon.svg     # Shield Logo Branding
+  ├── index.html      # Landing Page
+  ├── dashboard.html  # Main Training Dashboard
+  └── ...             # Module specific HTML files
+                    </pre>
+                </div>
+            </section>
+
+            <!-- Customization Guide -->
+            <!-- ================= CUSTOMIZATION SECTION ================= -->
+            <section id="customization" class="section">
+                <h2>2. Customization Guide</h2>
+                <p>Modify the look and feel of the platform by editing the CSS and Content.</p>
+
+                <div class="grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>Colors (CSS Variables)</h3>
+                        <p>Open <code>css/style.css</code> (Global styles) and locate the <code>:root</code> selector.</p>
+                        <pre style="margin-top: 10px;">
+:root {
+  --primary: #00d2ff;
+  --secondary: #0072ff;
+  --dark-bg: #0a0b10;
+}</pre>
+                        <!-- TODO: Replace brand colors -->
+                    </div>
+                    <div class="card">
+                        <h3>Typography</h3>
+                        <p>Fonts are imported from Google Fonts in the HTML head. To change fonts, update the link and <code>font-family</code> properties.</p>
+                        <p style="margin-top: 10px;">Default: <strong>Outfit</strong> (Headings) & <strong>Inter</strong> (Body).</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Content Replacement</h3>
+                    <p>To update text or links, search for the following keywords in the HTML files:</p>
+                    <ul style="margin-top: 1rem; padding-left: 1rem; color: var(--text-muted);">
+                        <li>• <code>&lt;!-- TODO: Replace client content --&gt;</code> - Marks areas for custom text.</li>
+                        <li>• <code>href="#"</code> - Update navigation and button links.</li>
+                        <li>• <code>&lt;img src="..."&gt;</code> - Replace images in the <code>/assets</code> or <code>/images</code> folder.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Page Structure -->
+            <!-- ================= PAGE STRUCTURE SECTION ================= -->
+            <section id="structure" class="section">
+                <h2>3. Page Structure</h2>
+                <p>A breakdown of all the pages included in this documentation and their purpose.</p>
+
+                <div class="grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>Home (index.html)</h3>
+                        <p>The corporate landing page featuring the hero section, training overview, and value proposition.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Dashboard (dashboard.html)</h3>
+                        <p>The central hub for employees to track their progress, view active modules, and access reports.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Training (training.html)</h3>
+                        <p>Interactive module interface where the actual cybersecurity lessons and assessments take place.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Analytics (risk-analytics.html)</h3>
+                        <p>Admin panel to visualize company-wide security risk scores and completion rates.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Threats (threats.html)</h3>
+                        <p>A specialized library of current cyber threats (Phishing, Ransomware, etc.) for education.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Contact (contact.html)</h3>
+                        <p>Support channel for reporting issues or requesting advanced training assistance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Credits -->
+            <!-- ================= CREDITS SECTION ================= -->
+            <section id="credits" class="section">
+                <h2>4. Credits</h2>
+                <p>Special thanks to the following resources used in this project:</p>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <ul style="color: var(--text-muted);">
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">Fonts:</strong> Google Fonts (Outfit, Inter)
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">Icons:</strong> Font Awesome 6.0 (Pro/Free)
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">Images:</strong> Unsplash / Pexels (Stock Cyber Graphics)
+                        </li>
+                        <li>
+                            <strong style="color: #fff;">Libraries:</strong> Chart.js (for analytics), AOS (for animations)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Changelog -->
+            <!-- ================= CHANGELOG SECTION ================= -->
+            <section id="changelog" class="section">
+                <h2>5. Changelog</h2>
+                
+                <div class="card" style="margin-top: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="margin-bottom: 0;">v1.0.0</h3>
+                        <span class="badge">Current</span>
+                    </div>
+                    <ul style="color: var(--text-muted); padding-left: 1.2rem; list-style-type: disc;">
+                        <li>Initial release of the Cybersecurity Training Platform.</li>
+                        <li>Full responsive dashboard implementation.</li>
+                        <li>Interactive threat intelligence library.</li>
+                        <li>Risk analytics visualization components.</li>
+                        <li>Core dark theme optimization for corporate security.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <!-- ================= SUPPORT SECTION ================= -->
+            <section id="support" class="section">
+                <h2>6. Support</h2>
+                <p>Need help with integration or custom features? Our team is here to assist.</p>
+
+                <div class="grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>Direct Contact</h3>
+                        <p>Email: <a href="mailto:support@cyberdocs.com" style="color: var(--primary-color);">support@cyberdocs.com</a></p>
+                        <p>Response Time: Within 24-48 business hours.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Troubleshooting</h3>
+                        <p>If you encounter layout issues, ensure you are using the latest version of Chrome, Safari, or Edge.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        /**
+         * ==========================================================================
+         * INTERACTIVE UI SCRIPT
+         * ==========================================================================
+         */
+
+        const sidebar = document.getElementById('sidebar');
+        const menuToggle = document.getElementById('menuToggle');
+        const overlay = document.getElementById('overlay');
+        const progressBar = document.getElementById('progressBar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        // Handles sidebar toggle for mobile devices
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close sidebar when clicking a link (mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Window Scroll Event
+        window.onscroll = () => {
+            handleProgress();
+            handleActiveLink();
+        };
+
+        // Scroll Progress Tracker Implementation
+        function handleProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+        }
+
+        // Active Section Highlighting logic
+        function handleActiveLink() {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // PDF Generation Function
+        function generatePDF() {
+            // Minimal JS approach for high compatibility
+            window.print();
+        }
+
+        // Smooth Scroll check for older browsers
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
